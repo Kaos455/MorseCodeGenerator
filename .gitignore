@@ -1,0 +1,23 @@
+# Ingore build and out directories
+build/
+out/
+
+# Make sure VS Studio files is ignored
+.vs/
+*.pdb
+
+# Ensure no exe, dll, obj, or lib files are pushed
+*.exe
+*.dll
+*.obj
+*.lib
+
+# Make sure no unnecessary CMake files are included
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Ignore any log files for when using them (If using them)
+logs/
+*.log
+*.tmp
