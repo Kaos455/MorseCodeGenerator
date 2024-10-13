@@ -4,6 +4,7 @@ out/
 
 # Make sure VS Studio files is ignored
 .vs/
+.vscode/
 *.pdb
 
 # Ensure no exe, dll, obj, or lib files are pushed

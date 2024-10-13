@@ -1,12 +1,9 @@
-#include "imgui.h"
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
-#include "imgui/imgui_impl_opengl3.h"
-#include "portaudio.h"
-#include "lame/lame.h"
-#include <iostream>
+#include "App.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-	std::cout << "Everything needed for ImGui, Mp3Lame, and PortAudio is included in this project." << std::endl;
-}
+	App app;
+	app.run();
+
+	return 0;
+};

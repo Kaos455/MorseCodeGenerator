@@ -2,9 +2,16 @@
     "name": "morse-code-generator",
     "version-string": "0.1",
     "description": "Generates Morse code audio using Qt as a GUI framework, Port Audio for sound generation, and mp3lame/audiofile for exporting to Mp3 and WAV",
-    "builtin-baseline": "9558037875497b9db8cf38fcd7db68ec661bffe7",
+    "builtin-baseline":"9558037875497b9db8cf38fcd7db68ec661bffe7",
     "dependencies": [
-        "imgui",
+        {
+          "name": "imgui",
+          "version>=": "1.89.7",
+          "features": [
+            "glfw-binding",
+            "opengl3-binding"
+          ]
+        },
         "portaudio",
         "mp3lame",
         "glfw3",
