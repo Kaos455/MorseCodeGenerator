@@ -1,18 +1,18 @@
 #include "Gui.h"
 
 // Constructor for GUI
-Gui::Gui(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share) : m_width(width), m_height(height)
+Gui::Gui(std::shared_ptr<event::EventListener> eventListener) : m_eventListener(eventListener), m_width(1280), m_height(720)
 {
 	if (!initGLFW()) return; // Initialise GLFW
 
-    // Initialise m_window
-	m_window = glfwCreateWindow(width, height, title, monitor, share); 
-    if (!m_window)
-    {
+	// Initialise m_window
+	m_window = glfwCreateWindow(1280, 720, "Morse Code Generator", NULL, NULL);
+	if (!m_window)
+	{
 		std::cerr << "Failed to create GLFW m_window" << std::endl;
 		glfwTerminate(); // Terminates GLFW
 		return;
-    }
+	}
 
 	glfwMakeContextCurrent(m_window); // Tells OpenGL to make m_window the current context of OpenGL
 
@@ -42,7 +42,7 @@ bool Gui::initGLFW()
 		return false;
 	}
 	std::cout << "Setup: GLFW Initialized" << std::endl;
-    return true;
+	return true;
 }
 
 bool Gui::initGLAD()
@@ -58,12 +58,12 @@ bool Gui::initGLAD()
 
 bool Gui::initImGui()
 {
-    // Init ImGui
+	// Init ImGui
 	IMGUI_CHECKVERSION(); // Check ImGui version to prevent version mismatch at compile time
 	ImGui::CreateContext(); // Create ImGui context
 	ImGuiIO& io = ImGui::GetIO(); // Create IO object Reference
 
-    // Setup ImGui with GLFW and OpenGL3
+	// Setup ImGui with GLFW and OpenGL3
 	if (!ImGui_ImplGlfw_InitForOpenGL(m_window, true)) { // Initialise ImGui with GLFW and tell it to handle events
 		std::cerr << "Failed to initialize ImGui with GLFW and OpenGL3" << std::endl;
 		return false;
@@ -90,12 +90,6 @@ void Gui::changeVSync(bool trigger)
 	}
 }
 
-// Callback Functions for GUI
-void Gui::setPlaySoundCallback(std::function<void()> callback)
-{
-	playSoundCallback = callback;
-}
-
 // Main functions for GUI Rendering
 bool Gui::windowShouldClose()
 {
@@ -104,21 +98,21 @@ bool Gui::windowShouldClose()
 
 void Gui::render()
 {
-    if (!glfwWindowShouldClose(m_window)) {
-        glfwWaitEvents();
+	if (!glfwWindowShouldClose(m_window)) {
+		glfwWaitEvents();
 
 		// Render ImGui
 		imGuiRender();
 
-        // Rendering
+		// Rendering
 		ImGui::Render();
-        glViewport(0, 0, m_width, m_height);
+		glViewport(0, 0, m_width, m_height);
 		glClearColor(0.45f, 0.55f, 0.60f, 0.00f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-        glfwSwapBuffers(m_window);
-    }
+		glfwSwapBuffers(m_window);
+	}
 }
 
 void Gui::imGuiRender()
@@ -140,7 +134,7 @@ void Gui::imGuiRender()
 		counter += incAmount;
 	ImGui::SliderInt("Volume", &incAmount, 0., 100);
 	if (ImGui::Button("Play Sound"))
-		playSoundCallback();
+		m_eventListener->addEvent(event::EventType::EVENT_BUTTON_CLICKED);
 	ImGui::End();
 
 	ImGui::SetNextWindowPos(ImVec2(640.0f, 0.0f));

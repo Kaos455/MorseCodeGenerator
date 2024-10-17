@@ -16,7 +16,9 @@ find_package(glfw3 CONFIG REQUIRED)
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
 include_directories("${CMAKE_SOURCE_DIR}/vendors")
-file(GLOB SOURCES "${CMAKE_SOURCE_DIR}/src/*.cpp")
+file(GLOB SOURCES
+    "${CMAKE_SOURCE_DIR}/src/*.cpp"
+)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME}

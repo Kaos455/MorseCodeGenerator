@@ -62,8 +62,8 @@ cmake --build . # add "--config release" to build release version"
 - **CMake**: Used to build the project into an executable, providing a clear and flexible build configuration process that supports multiple platforms (if ever decided to push to other Operating Systems).
 - **VCPKG**: Facilitates the dowloading of the dependencies required for the application, integrating with CMake seamlessly.
 - **Dear ImGui**: Chosen for its ease of use as a GUI framework that does not require external dependencies. It offers the feature set necessary for the application and operates as an immediate mode GUI, simplifying devleopment. Although not providing much in terms of stylability, it provides an aethetic I enjoy.
-- **PortAudio**: Utilized for real-time audio generation within the application, as well as generating the media sent to the exporter.
-- **Mp3Lame**: Utilized for exporting to MP3 file format
+- **PortAudio**: Utilised for real-time audio generation within the application, as well as generating the media sent to the exporter.
+- **Mp3Lame**: Utilised for exporting to MP3 file format
 - **GLFW + GLAD**: Since `Dear ImGui` is a framework that requires a backend, I chose to use OpenGL for its simplicity. Using GFLW and GLAD together to more easily use the OpenGL backend.
 
 ### Usage

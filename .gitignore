@@ -17,6 +17,7 @@ out/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
+CmakeSettings.json
 
 # Ignore any log files for when using them (If using them)
 logs/
