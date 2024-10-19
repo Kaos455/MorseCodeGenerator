@@ -5,16 +5,15 @@
 #define IMGUI_IMPL_OPENGL_LOADER_GLAD
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "imgui.h"
-#include "imgui/imgui_impl_glfw.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "gui/GuiImGui.h"
 
 // Include for EventListener#
-#include "EventListener.h"
+#include "events/EventListener.h"
 
 // Includes for Standard Library
 #include <iostream>
 #include <functional> // std::function
+#include <memory>
 
 /**
   * @brief The GUI class is a class that represents the GUI of the application.
@@ -39,13 +38,13 @@ private:
 	bool initGLAD();
 	bool initImGui();
 	void changeVSync(bool trigger);
-	void imGuiRender(); // Render ImGui Elements cleans the "startRender" function
 
 	// Member Variables
 	GLFWwindow* m_window = nullptr;
 	int m_width;
 	int m_height;
 	std::shared_ptr<event::EventListener> m_eventListener;
+	std::unique_ptr<GuiImGui> m_guiImGui = std::make_unique<GuiImGui>(m_eventListener);
 };
 
 #endif

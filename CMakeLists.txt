@@ -18,6 +18,8 @@ include_directories("${CMAKE_SOURCE_DIR}/include")
 include_directories("${CMAKE_SOURCE_DIR}/vendors")
 file(GLOB SOURCES
     "${CMAKE_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_SOURCE_DIR}/src/events/*.cpp"
+    "${CMAKE_SOURCE_DIR}/src/gui/*.cpp"
 )
 add_executable(${PROJECT_NAME} ${SOURCES})
 

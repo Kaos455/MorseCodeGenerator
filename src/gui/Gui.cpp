@@ -1,4 +1,4 @@
-#include "Gui.h"
+#include "gui/Gui.h"
 
 // Constructor for GUI
 Gui::Gui(std::shared_ptr<event::EventListener> eventListener) : m_eventListener(eventListener), m_width(1280), m_height(720)
@@ -38,20 +38,20 @@ Gui::~Gui()
 bool Gui::initGLFW()
 {
 	if (!glfwInit()) {
-		std::cerr << "Failed to initialize GLFW" << std::endl;
+		std::cerr << "Failed to initialise GLFW" << std::endl;
 		return false;
 	}
-	std::cout << "Setup: GLFW Initialized" << std::endl;
+	std::cout << "Setup: GLFW Initialised" << std::endl;
 	return true;
 }
 
 bool Gui::initGLAD()
 {
 	if (!gladLoadGL()) {
-		std::cerr << "Failed to initialize GLAD" << std::endl;
+		std::cerr << "Failed to initialise GLAD" << std::endl;
 		return false;
 	}
-	std::cout << "Setup: GLAD Initialized" << std::endl;
+	std::cout << "Setup: GLAD initialised" << std::endl;
 	return true;
 }
 
@@ -65,14 +65,14 @@ bool Gui::initImGui()
 
 	// Setup ImGui with GLFW and OpenGL3
 	if (!ImGui_ImplGlfw_InitForOpenGL(m_window, true)) { // Initialise ImGui with GLFW and tell it to handle events
-		std::cerr << "Failed to initialize ImGui with GLFW and OpenGL3" << std::endl;
+		std::cerr << "Failed to initialise ImGui with GLFW and OpenGL3" << std::endl;
 		return false;
 	}
 	if (!ImGui_ImplOpenGL3_Init("#version 330")) { // Initialise ImGui with OpenGL3
-		std::cerr << "Failed to initialize ImGui with OpenGL3" << std::endl;
+		std::cerr << "Failed to initialise ImGui with OpenGL3" << std::endl;
 		return false;
 	}
-	std::cout << "Setup: ImGui Initialized" << std::endl;
+	std::cout << "Setup: ImGui Initialised" << std::endl;
 	return true;
 }
 // End of initialisation functions for GUI
@@ -102,7 +102,7 @@ void Gui::render()
 		glfwWaitEvents();
 
 		// Render ImGui
-		imGuiRender();
+		m_guiImGui->imGuiRender();
 
 		// Rendering
 		ImGui::Render();
@@ -113,33 +113,4 @@ void Gui::render()
 
 		glfwSwapBuffers(m_window);
 	}
-}
-
-void Gui::imGuiRender()
-{
-	static int incAmount = 1;
-	static int counter = 0;
-	// Start ImGui Frame
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
-
-	// This block took from https://github.com/ocornut/imgui/issues/3541
-	// This block is used to make the ImGui m_window fullscreen and Resize with the GLFW m_window
-	ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f));
-	ImGui::SetNextWindowSize(ImVec2(640.0f, 720.0f));
-	ImGui::Begin("Input Test", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
-	// 
-	if (ImGui::Button("Increment"))
-		counter += incAmount;
-	ImGui::SliderInt("Volume", &incAmount, 0., 100);
-	if (ImGui::Button("Play Sound"))
-		m_eventListener->addEvent(event::EventType::EVENT_BUTTON_CLICKED);
-	ImGui::End();
-
-	ImGui::SetNextWindowPos(ImVec2(640.0f, 0.0f));
-	ImGui::SetNextWindowSize(ImVec2(640.0f, 720.0f));
-	ImGui::Begin("Output Test", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
-	ImGui::Text("Counter: %d", counter);
-	ImGui::Text("Increment Amount: %d", incAmount);
 }

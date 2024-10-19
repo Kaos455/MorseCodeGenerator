@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 // Custom Library Imports
-#include "EventTypes.h" // event::EventType
+#include "events/EventTypes.h" // event::EventType
 
 namespace event {
 	class EventListener

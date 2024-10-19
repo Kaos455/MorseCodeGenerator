@@ -14,8 +14,7 @@ void Application::run()
 {
 	while (!m_gui->windowShouldClose())
 	{
-		if (m_eventListener->hasEvent())
-			m_eventHandler->handleEvent(m_eventListener->getEvent());
-		m_gui->render();
+		m_eventHandler->waitEvent(); // Wait for Event Listener to have an Event
+		m_gui->render(); // Render the frame after event Handled
 	}
 }

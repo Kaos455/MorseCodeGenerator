@@ -6,9 +6,9 @@
 #include <iostream> 
 
 // Custom Library Imports
-#include "EventHandler.h"
-#include "EventListener.h"
-#include "Gui.h"
+#include "events/EventHandler.h"
+#include "events/EventListener.h"
+#include "gui/Gui.h"
 
 class Application
 {
@@ -28,7 +28,7 @@ private:
 	std::shared_ptr<event::EventListener> m_eventListener = std::make_shared<event::EventListener>();
 	std::shared_ptr<Gui> m_gui = std::make_shared<Gui>(m_eventListener);
 
-	std::unique_ptr<event::EventHandler> m_eventHandler = std::make_unique<event::EventHandler>();
+	std::unique_ptr<event::EventHandler> m_eventHandler = std::make_unique<event::EventHandler>(m_eventListener);
 };
 
 #endif // APPLICATION_H
