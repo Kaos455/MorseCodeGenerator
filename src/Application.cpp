@@ -1,7 +1,10 @@
 #include "Application.h"
 
 // Constructor
-Application::Application() // Current the Screen is 1280x720 and defaulted within the Constructor
+Application::Application() : // Current the Screen is 1280x720 and defaulted within the Constructor
+	m_eventListener(std::make_shared<event::EventListener>()),
+	m_gui(std::make_shared<Gui>(m_eventListener)),
+	m_eventHandler(std::make_unique<event::EventHandler>(m_eventListener))
 {
 
 }

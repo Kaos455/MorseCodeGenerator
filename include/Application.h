@@ -1,11 +1,11 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-// Standard Library Imports
+// Standard Library Includes
 #include <memory>
 #include <iostream> 
 
-// Custom Library Imports
+// Custom Library Includes
 #include "events/EventHandler.h"
 #include "events/EventListener.h"
 #include "gui/Gui.h"
@@ -13,22 +13,36 @@
 class Application
 {
 public:
-	// Constructor
+	/*
+	* @brief Constructor for Application
+	* 
+	* This constructor will create the Application object and initialise all the necessary components for the application to run
+	*/
 	Application();
-	// Destructor
+	
+	/*
+	* @brief Destructor for Application
+	* 
+	* Handles the cleanup for the Application object
+	*/
 	~Application();
 
 	// Public Functions
+	/*
+	* @brief Runs main loop of the application
+	* 
+	* @params none
+	* @return void
+	*/
 	void run();
 
 private:
-	// Member Functions
+	// Shared Pointers
+	std::shared_ptr<event::EventListener> m_eventListener;
+	std::shared_ptr<Gui> m_gui;
 
-	// Member Variables
-	std::shared_ptr<event::EventListener> m_eventListener = std::make_shared<event::EventListener>();
-	std::shared_ptr<Gui> m_gui = std::make_shared<Gui>(m_eventListener);
-
-	std::unique_ptr<event::EventHandler> m_eventHandler = std::make_unique<event::EventHandler>(m_eventListener);
+	// Unique Pointers
+	std::unique_ptr<event::EventHandler> m_eventHandler;
 };
 
 #endif // APPLICATION_H

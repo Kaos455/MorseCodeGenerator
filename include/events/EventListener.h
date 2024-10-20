@@ -1,11 +1,11 @@
 #ifndef EVENTLISTENER_H
 #define EVENTLISTENER_H
 
-// Standard Library Imports
+// Standard Library Includes
 #include <queue> // std::queue
 #include <stdexcept>
 
-// Custom Library Imports
+// Custom Library Includes
 #include "events/EventTypes.h" // event::EventType
 
 namespace event {
@@ -41,8 +41,7 @@ namespace event {
 		*/
 		bool hasEvent();
 	private:
-		// Array for Listener
-		std::queue<EventType> events;
+		std::queue<EventType> events; // Events Queue
 	};
 }
 
