@@ -6,8 +6,6 @@
 #include <iostream> 
 
 // Custom Library Includes
-#include "events/EventHandler.h"
-#include "events/EventListener.h"
 #include "gui/Gui.h"
 
 class Application
@@ -38,11 +36,7 @@ public:
 
 private:
 	// Shared Pointers
-	std::shared_ptr<event::EventListener> m_eventListener;
 	std::shared_ptr<Gui> m_gui;
-
-	// Unique Pointers
-	std::unique_ptr<event::EventHandler> m_eventHandler;
 };
 
 #endif // APPLICATION_H

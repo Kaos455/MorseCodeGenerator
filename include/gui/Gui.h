@@ -1,15 +1,15 @@
 #ifndef GUI_H
 #define GUI_H
-// Standard Library Includes
-#include <iostream>
-#include <functional> // std::function
-#include <memory>
-
 #define IMGUI_IMPL_OPENGL_LOADER_GLAD
 
 // Custom Library Includes
 #include "gui/GuiOpenGL.h"
 #include "gui/GuiImGui.h"
+
+// Standard Library Includes
+#include <iostream>
+#include <functional> // std::function
+#include <memory>
 
 /**
  * @brief The GUI class is a class that represents the GUI of the application.
@@ -19,20 +19,14 @@
  */
 class Gui
 {
-	// Member Pointers
-	std::shared_ptr<event::EventListener> m_eventListener;
-	std::unique_ptr<GuiOpenGL> m_guiOpenGL;
-	std::unique_ptr<GuiImGui> m_guiImGui;
 public:
 	/*
 	* @brief Constructor for GUI
 	 *
 	 * This consturctor will call the initialisation functions for the OpenGL backend, such as GLFW and GLAD
 	 * This constructor does not start the main rendering loop of the application.
-	 *
-	 * @param eventListener The event listener to be passed to the GuiImGui class
 	*/
-	Gui(std::shared_ptr<event::EventListener> eventListener);
+	Gui();
 	
 	/*
 	 * @brief Destructor for GUI
@@ -42,9 +36,9 @@ public:
 	~Gui() = default;
 
 	/* 
-	* @brief Function to check if the m_window should close
+	* @brief Function to check if the _window should close
 	* 
-	* This function will return a boolean value of whether the m_window should close or not
+	* This function will return a boolean value of whether the _window should close or not
 	* Incredibly important for the Application Loop
 	* 
 	* @return bool True (if yes) or False (if no)
@@ -61,6 +55,9 @@ public:
 	void render();
 
 private:
+	// Member Pointers
+	std::unique_ptr<GuiOpenGL> m_guiOpenGL;
+	std::unique_ptr<GuiImGui> m_guiImGui;
 };
 
 #endif

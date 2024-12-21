@@ -41,13 +41,13 @@ cd build
 ```
 3. **Install Directories and Build the project with CMake**
 ```bash
-cmake -S ..
+cmake -DCMAKE_TOOLCHAIN_FILE={PATH TO ROOT OF VCPKG}/scripts/buildsystems/vcpkg.cmake -S .. # Make sure to change {} to the root of vcpkg for example "C:Users/mark/vcpkg"
 cmake --build . # add "--config release" to build release version"
 ```
-5. **Run the application**:
+4. **Run the application**:
 ```bash
-.\debug\MorseCodeGenerator.exe # if debug build
-.\release\MorseCodeGenerator.exe # if release build
+.build\debug\MorseCodeGenerator.exe # if debug build
+.build\release\MorseCodeGenerator.exe # if release build
 ```
 
 ### File Structure
