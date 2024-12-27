@@ -3,6 +3,8 @@
 
 #include "imgui.h"
 
+#include "gui/custom_components/MediaPlayer.h"
+
 class FooterComponent
 {
 public:

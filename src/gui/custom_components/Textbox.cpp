@@ -27,5 +27,5 @@ Textbox::~Textbox()
 // Render method for the Textbox
 void Textbox::render() 
 {
-    ImGui::InputTextMultiline(label, inputBuffer, bufferSize, getSize());
+     ImGui::InputTextMultiline(label, inputBuffer, bufferSize, getSize());
 }

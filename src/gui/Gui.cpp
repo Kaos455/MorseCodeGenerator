@@ -3,9 +3,7 @@
 // Constructor for GUI
 Gui::Gui() :
 	m_guiOpenGL(std::make_unique<GuiOpenGL>()),
-	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow()))
-{
-}
+	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow())) {}
 
 // Main functions for GUI Rendering
 bool Gui::windowShouldClose() const

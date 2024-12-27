@@ -4,5 +4,8 @@ FooterComponent::FooterComponent() : io(ImGui::GetIO()) {}
 
 void FooterComponent::render()
 {
-	ImGui::Text("This is the Footer");
+	ImGui::Dummy(ImVec2(0, 25.0f));
+
+	static ImGuiComponents::MediaPlayer mediaPlayer("##Volume", ImVec2(ImGui::GetContentRegionAvail().x, 125.0f));
+	mediaPlayer.render();
 }
