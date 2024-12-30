@@ -22,6 +22,5 @@ int main()
 	// Using unique_ptr to manage the memory of the Application automatically.
 	std::unique_ptr<Application> app = std::make_unique<Application>();
 	app->run();
-
 	return 0;
 }

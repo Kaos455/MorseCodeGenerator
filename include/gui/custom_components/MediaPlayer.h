@@ -8,7 +8,7 @@ namespace ImGuiComponents {
 	{
 	public:
 		MediaPlayer(const char* label, const ImVec2& size);
-		~MediaPlayer() = default;
+		~MediaPlayer();
 
 		void render();
 	private:

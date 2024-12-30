@@ -13,6 +13,7 @@ namespace ImGuiComponents {
 	{
 	public:
 		OutputBox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2& size);
+		~OutputBox();
 
 		virtual void render() override;
 

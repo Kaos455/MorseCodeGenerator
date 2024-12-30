@@ -8,6 +8,15 @@ MediaPlayer::MediaPlayer(const char* label, const ImVec2& size)
     : io(ImGui::GetIO()), isPlaying(false), progress(0.0f), volume(75),
     label(label), size(size) {}
 
+
+MediaPlayer::~MediaPlayer()
+{
+    if (label)
+    {
+        label = nullptr;
+    }
+}
+
 void MediaPlayer::render()
 {
     ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10.0f);

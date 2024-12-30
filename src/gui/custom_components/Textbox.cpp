@@ -11,7 +11,11 @@ Textbox::Textbox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2
 // Destructor
 Textbox::~Textbox()
 {
-};
+    if (label)
+    {
+        label = nullptr;
+    }
+}
 
 // Render method for the Textbox
 void Textbox::render() 

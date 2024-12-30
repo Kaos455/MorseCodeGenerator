@@ -5,6 +5,15 @@ using namespace ImGuiComponents;
 OutputBox::OutputBox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2& size)
 	: ImGuiComponent(size), label(label), io(ImGui::GetIO()), buffer(buffer) {}
 
+
+OutputBox::~OutputBox()
+{
+    if (label)
+    {
+        label = nullptr;
+    }
+}
+
 void OutputBox::render()
 {
     applyStyle();
