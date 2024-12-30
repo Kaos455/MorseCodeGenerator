@@ -5,6 +5,7 @@
 #include "gui/custom_components/HeaderComponent.h"
 #include "gui/custom_components/MainComponent.h"
 #include "gui/custom_components/FooterComponent.h"
+#include "buffer/Buffer.h"
 
 // Standard Library Includes
 #include <iostream>
@@ -27,7 +28,7 @@ public:
 	* 
 	* @param GLFWwindow* window The window to be passed to ImGui
 	*/
-	GuiImGui(GLFWwindow* window);
+	GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer);
 
 	/*
 	* @brief Destructor for GuiImGui
@@ -73,6 +74,9 @@ public:
 
 private:
 	GLFWwindow* m_window = nullptr;
+
+	std::shared_ptr<Buffer> m_inputBuffer;
+	std::shared_ptr<Buffer> m_outputBuffer;
 };
 
 

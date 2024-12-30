@@ -1,9 +1,9 @@
 #include "gui/Gui.h"
 
 // Constructor for GUI
-Gui::Gui() :
-	m_guiOpenGL(std::make_unique<GuiOpenGL>()),
-	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow())) {}
+Gui::Gui(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer) 
+	: m_guiOpenGL(std::make_unique<GuiOpenGL>()),
+	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow(), inputBuffer, outputBuffer)) {}
 
 // Main functions for GUI Rendering
 bool Gui::windowShouldClose() const

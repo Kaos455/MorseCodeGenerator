@@ -1,8 +1,8 @@
 #include "gui/GuiImGui.h"
 
 // Constructor for ImGui Gui
-GuiImGui::GuiImGui(GLFWwindow* window) :
-	m_window(window)
+GuiImGui::GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer) 
+	: m_window(window), m_inputBuffer(inputBuffer), m_outputBuffer(outputBuffer)
 {
 	if (!initImGui()) {
 		std::cerr << "Setup: Failed to initialise ImGui" << std::endl;
@@ -58,7 +58,7 @@ void GuiImGui::preRender() // Pre-render is the where the new frame is added to 
 
 	ImGui::Separator();
 
-	static MainComponent main;
+	static MainComponent main(m_inputBuffer, m_outputBuffer);
 	main.render();
 
 	ImGui::Separator();

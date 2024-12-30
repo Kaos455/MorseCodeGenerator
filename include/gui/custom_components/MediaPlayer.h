@@ -16,12 +16,17 @@ namespace ImGuiComponents {
 		void renderVolumeControl();
 		void renderProgressBar();
 
+		void applyBGStyle();
+		void popBGStyle();
+
 		bool isPlaying;
 		float progress;
 		int volume;
 
 		const char* label;
 		ImVec2 size;
+
+		ImGuiIO& io;
 	};
 }
 

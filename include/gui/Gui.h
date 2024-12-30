@@ -5,6 +5,7 @@
 // Custom Library Includes
 #include "gui/GuiOpenGL.h"
 #include "gui/GuiImGui.h"
+#include "buffer/Buffer.h"
 
 // Standard Library Includes
 #include <iostream>
@@ -26,7 +27,7 @@ public:
 	 * This consturctor will call the initialisation functions for the OpenGL backend, such as GLFW and GLAD
 	 * This constructor does not start the main rendering loop of the application.
 	*/
-	Gui();
+	Gui(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer);
 	
 	/*
 	 * @brief Destructor for GUI

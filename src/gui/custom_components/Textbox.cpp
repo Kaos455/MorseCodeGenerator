@@ -3,29 +3,35 @@
 using namespace ImGuiComponents; 
 
 // Constructor
-Textbox::Textbox(const char* label, size_t bufferSize, const ImVec2& size)
-    : ImGuiComponent(size), label(label), bufferSize(bufferSize)
+Textbox::Textbox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2& size)
+    : ImGuiComponent(size), label(label), buffer(buffer)
 {
-    inputBuffer = new char[bufferSize];  // Creating a new "static array" dynamically, which is the size of "bufferSize"
-
-    for (int i = 0; i < bufferSize; i++) // Filling the inputBuffer with "null characters" (empty values using the Null termination escape character)
-    {
-        inputBuffer[i] = '\0';
-    }
 }
 
 // Destructor
 Textbox::~Textbox()
 {
-    if (inputBuffer) // Check if the object was instanced properly, as if it fails at any point it is not going to delete some "unitialised" values
-    {
-        delete[] inputBuffer;  // Clearing the inputBuffer
-        inputBuffer = nullptr; // Setting the inputBuffer pointer to reference a nullptr 
-    }
 };
 
 // Render method for the Textbox
 void Textbox::render() 
 {
-     ImGui::InputTextMultiline(label, inputBuffer, bufferSize, getSize());
+    applyStyle();
+    ImGui::InputTextMultiline(label, buffer->getData(), buffer->getCapacity(), getSize());
+    popStyle();
+}
+
+void Textbox::applyStyle()
+{
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.15f, 0.15f, 0.15f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(0.25f, 0.25f, 0.25f, 1.0f));
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5.0f, 5.0f));
+}
+
+void Textbox::popStyle()
+{
+    ImGui::PopStyleVar(2);
+    ImGui::PopStyleColor(3);
 }

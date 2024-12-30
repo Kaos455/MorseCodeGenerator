@@ -7,6 +7,7 @@
 
 // Custom Library Includes
 #include "gui/Gui.h"
+#include "buffer/Buffer.h" // Buffer objects for use as inputBuffer and outputBuffer
 
 class Application
 {
@@ -36,6 +37,9 @@ public:
 
 private:
 	// Shared Pointers
+	std::shared_ptr<Buffer> m_inputBuffer;  // At the root of the application to allow access
+	std::shared_ptr<Buffer> m_outputBuffer; // throughout the application without use of globals
+
 	std::shared_ptr<Gui> m_gui;
 };
 
