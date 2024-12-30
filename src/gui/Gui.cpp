@@ -1,12 +1,9 @@
 #include "gui/Gui.h"
 
 // Constructor for GUI
-Gui::Gui(std::shared_ptr<event::EventListener> eventListener) :
-	m_eventListener(eventListener),
-	m_guiOpenGL(std::make_unique<GuiOpenGL>()),
-	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow(), m_eventListener))
-{
-}
+Gui::Gui(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer) 
+	: m_guiOpenGL(std::make_unique<GuiOpenGL>()),
+	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow(), inputBuffer, outputBuffer)) {}
 
 // Main functions for GUI Rendering
 bool Gui::windowShouldClose() const
@@ -28,6 +25,5 @@ void Gui::render()
 		// Post Render functions
 		m_guiImGui->postRender();
 		m_guiOpenGL->postRender();
-
 	}
 }

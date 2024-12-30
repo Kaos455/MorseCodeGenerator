@@ -6,9 +6,8 @@
 #include <iostream> 
 
 // Custom Library Includes
-#include "events/EventHandler.h"
-#include "events/EventListener.h"
 #include "gui/Gui.h"
+#include "buffer/Buffer.h" // Buffer objects for use as inputBuffer and outputBuffer
 
 class Application
 {
@@ -38,11 +37,10 @@ public:
 
 private:
 	// Shared Pointers
-	std::shared_ptr<event::EventListener> m_eventListener;
-	std::shared_ptr<Gui> m_gui;
+	std::shared_ptr<Buffer> m_inputBuffer;  // At the root of the application to allow access
+	std::shared_ptr<Buffer> m_outputBuffer; // throughout the application without use of globals
 
-	// Unique Pointers
-	std::unique_ptr<event::EventHandler> m_eventHandler;
+	std::shared_ptr<Gui> m_gui;
 };
 
 #endif // APPLICATION_H

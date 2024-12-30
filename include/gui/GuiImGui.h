@@ -1,18 +1,22 @@
 #ifndef GUIIMGUI_H
 #define GUIIMGUI_H
 
+// Custom Components
+#include "gui/custom_components/HeaderComponent.h"
+#include "gui/custom_components/MainComponent.h"
+#include "gui/custom_components/FooterComponent.h"
+#include "buffer/Buffer.h"
+
 // Standard Library Includes
 #include <iostream>
 #include <memory>
-
-// Custom Library Includes
-#include "events/EventListener.h"
+#include <string>
+#include <sstream>
 
 // Dear ImGui Includes
 #include "imgui.h"
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
-
 
 class GuiImGui
 {
@@ -23,9 +27,8 @@ public:
 	* This constructor will call the initialisation functions for the ImGui front end
 	* 
 	* @param GLFWwindow* window The window to be passed to ImGui
-	* @param std::shared_ptr<event::EventListener> eventListener The event listener to be passed to ImGui
 	*/
-	GuiImGui(GLFWwindow* window, std::shared_ptr<event::EventListener> eventListener);
+	GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer);
 
 	/*
 	* @brief Destructor for GuiImGui
@@ -33,9 +36,6 @@ public:
 	* This destructor will handle the cleanup for the ImGui front end
 	*/
 	~GuiImGui();
-
-
-	void renderWindow(); // Temp func
 	 
 	/*
 	* @brief Function to initialise ImGui
@@ -61,16 +61,22 @@ public:
 	void render();
 
 	/*
-	* @breif Handles post-rendering for ImGui
+	* @brief Handles post-rendering for ImGui
 	* 
 	* @param none
 	* @return void
 	*/
 	void postRender();
 
+	// ImGui setup -> ApplyTheme, Setup Fonts etc
+	void applyTheme();
+	void setupImGuiFonts(ImGuiIO& io);
+
 private:
 	GLFWwindow* m_window = nullptr;
-	std::shared_ptr<event::EventListener> m_eventListener;
+
+	std::shared_ptr<Buffer> m_inputBuffer;
+	std::shared_ptr<Buffer> m_outputBuffer;
 };
 
 

@@ -10,7 +10,7 @@ GuiOpenGL::GuiOpenGL()
 
 GuiOpenGL::~GuiOpenGL()
 {
-	glfwDestroyWindow(m_window); // Destroy GLFW m_window -> handles cleanup of pointer for m_window
+	glfwDestroyWindow(m_window); // Destroy GLFW _window -> handles cleanup of pointer for _window
 	glfwTerminate(); // Terminate GLFW
 }
 
@@ -19,9 +19,9 @@ bool GuiOpenGL::initOpenGL()
 {
 	if (!initGLFW()) // Initialise GLFW
 		return false; 
-	if (!initWindow()) // Initialise GLFW m_window
+	if (!initWindow()) // Initialise GLFW _window
 		return false;
-	glfwMakeContextCurrent(m_window); // Tells OpenGL to make m_window the current context of OpenGL
+	glfwMakeContextCurrent(m_window); // Tells OpenGL to make _window the current context of OpenGL
 	if (!initGLAD()) // Initialise GLAD
 		return false;
 	return true;
@@ -34,6 +34,7 @@ bool GuiOpenGL::initGLFW()
 		std::cerr << "Failed to initialise GLFW" << std::endl;
 		return false;
 	}
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 	std::cout << "Setup: GLFW Initialised" << std::endl;
 	return true;
 }
@@ -51,10 +52,10 @@ bool GuiOpenGL::initGLAD()
 
 bool GuiOpenGL::initWindow()
 {
-	m_window = glfwCreateWindow(1280, 720, "Morse Code Generator", NULL, NULL); // Create GLFW m_window
+	m_window = glfwCreateWindow(1280, 720, "Morse Code Generator", NULL, NULL); // Create GLFW _window
 	if (!m_window) // Window Checker
 	{
-		std::cerr << "Failed to create GLFW m_window" << std::endl;
+		std::cerr << "Failed to create GLFW _window" << std::endl;
 		glfwTerminate(); // Terminates GLFW
 		return false;
 	}
