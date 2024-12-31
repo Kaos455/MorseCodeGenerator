@@ -16,28 +16,35 @@ void MorseCodeGenerator::generate()
 {
 	char* inputData = m_inputBuffer->getData();
 	char* outputData = m_outputBuffer->getData();
+	int outputCharIndex = 0;
 
 	for (size_t i = 0; i < m_inputBuffer->getCapacity(); i++)
 	{
-		if (inputData[i] == '\0')
+		if (inputData[i] == '\0' || outputCharIndex > m_outputBuffer->getCapacity())
 		{
 			break;
 		}
 
-		auto morseCodeIterator = morseMap.find(inputData[i]);
+		auto morseCodeIterator = morseMap.find(std::tolower(inputData[i]));
 		if (morseCodeIterator != morseMap.end())
 		{
 			MorseCode& morseCode = morseCodeIterator->second;
 			for (size_t j = 0; j < morseCode.length; j++)
 			{
-				std::cout << morseCode.morseCode[j];
+				if (outputCharIndex > m_outputBuffer->getCapacity())
+				{
+					break;
+				}
+
+				outputData[outputCharIndex] = morseCode.morseCode[j];
+				outputCharIndex++;
 			}
-			std::cout << " ";
+			outputData[outputCharIndex] = ' ';
+			outputCharIndex ++;
 		}
 		else
 		{
 			std::cout << "Generator Error: Could not find letter - " << inputData[i] << " - within the Morse Code Map" << std::endl;
 		}
 	}
-	std::cout << std::endl;
 }

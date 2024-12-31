@@ -32,7 +32,7 @@ void OutputBox::applyStyle()
     ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10.0f);
 
     if (ImGui::GetIO().Fonts->Fonts.size() > 1) {
-        ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+        ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[3]);
     }
     else {
         std::cerr << "Font index out of bounds!" << std::endl;

@@ -58,6 +58,9 @@ inline std::unordered_map<char, MorseCode> createMorseCodeMap() {
         {'!', {6, {'-', '.', '-', '.', '-', '-'}}},
 
         // Space
-        {' ', {1, {'/'}}}
+        {' ', {1, {'/'}}},
+
+        // New Line Char
+        {'\n', {1, {'\n'}}}
     };
 }
