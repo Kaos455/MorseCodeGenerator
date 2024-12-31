@@ -28,8 +28,14 @@ void MainComponent::render()
 	ImGui::PushFont(io.Fonts->Fonts[3]);
 	if (ImGui::Button("Copy Output"))
 	{
-		std::cout << "Clipboard: " << m_outputBuffer->getData() << std::endl;
+		copyToClipboard(m_outputBuffer->getData());
+		std::cout << "Input: " << m_inputBuffer->getData() << std::endl;
+		std::cout << "Output: " << m_outputBuffer->getData() << std::endl;
 	}
 	ImGui::PopStyleColor(3);
 	ImGui::PopFont();
+}
+
+void MainComponent::copyToClipboard(const char* buffer) {
+	ImGui::SetClipboardText(buffer);
 }

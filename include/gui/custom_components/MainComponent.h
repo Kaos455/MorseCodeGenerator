@@ -16,6 +16,8 @@ public:
 	void render(); // Render Method
 
 private: 
+	void copyToClipboard(const char* buffer);
+
 	ImGuiIO& io;
 
 	std::shared_ptr<Buffer> m_inputBuffer;
