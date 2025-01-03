@@ -13,17 +13,29 @@
   
 - `Real-time` translations.
   
-- Real-time Morse code readout (`Sound implementation`).
-  
 - Immediate mode `GUI`.
-  
-- Ability to adjust settings such as `frequencies` and `dot/dash timings`.
   
 #### Additional Expected Features
 
 - **Encryption** - `Encrypt` the input before translating to Morse code.
   
 - **Export Capabilities** - `Export` the output in a printable format or WAV/MP3.
+
+- **Sound Generation** - Real-time Morse code readout (`Sound implementation`).
+
+- **Changeable Settings** - Ability to adjust settings such as `frequencies` and `dot/dash timings`.
+
+### Future Plan
+
+**Morse Code Generator** initially began as a University project, however as development proceeded it became more of a personal project that im doing for a University Assignment. For this reason, even once University project is completed, I am going to continue working
+on the **Morse Code Generator**
+
+#### Roadmap
+- **Integrate Event Dispatcher** - **PRIORITY** - Simplify communication throughout application through an Event Dispatcher.
+
+- **Sound Generation** - **SECONDARY** - A Key idea of this project was to implement sound generation, so I would like to properly implement sound generation.
+
+- **Settings and Exporting** - **LASTLY** - Lastly, I would like to implement a Settings and Exporting window to the application to allow users to change everything in the ways the would like.
 
 ### Installation
 
@@ -44,7 +56,11 @@ cd build
 cmake -DCMAKE_TOOLCHAIN_FILE={PATH TO ROOT OF VCPKG}/scripts/buildsystems/vcpkg.cmake -S .. # Make sure to change {} to the root of vcpkg for example "C:Users/mark/vcpkg"
 cmake --build . # add "--config release" to build release version"
 ```
-4. **Run the application**:
+4. **Move the Resources folder into the executable directory**
+```bash
+// Make sure this is done or the program will *NOT* start up
+```
+6. **Run the application**:
 ```bash
 .build\debug\MorseCodeGenerator.exe # if debug build
 .build\release\MorseCodeGenerator.exe # if release build
