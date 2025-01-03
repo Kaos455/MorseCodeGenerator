@@ -44,7 +44,11 @@ void MorseCodeGenerator::generate()
 		}
 		else
 		{
-			std::cout << "Generator Error: Could not find letter - " << inputData[i] << " - within the Morse Code Map" << std::endl;
+			outputData[outputCharIndex] = '#'; // Hash for now signifies an untranslatable character
+			outputCharIndex++;
+
+			outputData[outputCharIndex] = ' ';
+			outputCharIndex++;
 		}
 	}
 }

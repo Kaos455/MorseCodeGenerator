@@ -18,6 +18,8 @@ void MainComponent::render()
 
 	// Render the text
 	ImGui::Text("Generated Morse Code:");
+	ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize("Symbol -> '#' signifies cannot translate that character").x);
+	ImGui::Text("Symbol -> '#' signifies cannot translate that character");
 	ImGuiComponents::OutputBox outputBox("##Output", m_outputBuffer, ImVec2(ImGui::GetContentRegionAvail().x, 350.0f));
 	outputBox.render();
 

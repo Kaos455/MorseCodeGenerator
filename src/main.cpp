@@ -20,7 +20,10 @@ int main()
 {
 	// Using heap allocation for the Application because its size may exceed the stack allocation limit.
 	// Using unique_ptr to manage the memory of the Application automatically.
+
 	std::unique_ptr<Application> app = std::make_unique<Application>();
 	app->run();
+
+	
 	return 0;
 }
