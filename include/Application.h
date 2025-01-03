@@ -3,7 +3,10 @@
 
 // Standard Library Includes
 #include <memory>
-#include <iostream> 
+#include <iostream>
+#include <stdexcept>
+#include <filesystem>
+#include <vector>
 
 // Custom Library Includes
 #include "gui/Gui.h"
@@ -37,6 +40,10 @@ public:
 	void run();
 
 private:
+
+	void checkResourcesFolder();
+	void checkFontsFolder();
+
 	// Shared Pointers
 	std::shared_ptr<Buffer<char>> m_inputBuffer;  // Input buffer with a copy to be used with Event Dispatcher later
 	std::shared_ptr<Buffer<char>> m_inputBufferCopy;
