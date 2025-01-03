@@ -1,7 +1,11 @@
 #include "gui/custom_components/HeaderComponent.h"
 
 
-HeaderComponent::HeaderComponent() : io(ImGui::GetIO()), isSettingModalOpen(false), isExportModalOpen(false) {}
+HeaderComponent::HeaderComponent() 
+    : io(ImGui::GetIO()), isSettingModalOpen(false), isExportModalOpen(false) 
+{
+    std::cout << "Setup: Header Component created" << std::endl;
+}
 
 void HeaderComponent::render() 
 {
@@ -41,7 +45,7 @@ void HeaderComponent::settingButton()
     }
 
     // Begin the modal and resize it
-    if (ImGui::BeginPopupModal("Settings", nullptr)) {
+    if (ImGui::BeginPopupModal("Settings", nullptr, ImGuiWindowFlags_NoMove)) {
         ImGui::SetWindowSize(ImVec2(800, 600));
 
         ImVec2 windowPos = ImVec2(

@@ -1,6 +1,6 @@
 #include "generator/MorseCodeGenerator.h"
 
-MorseCodeGenerator::MorseCodeGenerator(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer)
+MorseCodeGenerator::MorseCodeGenerator(std::shared_ptr<Buffer<char>> inputBuffer, std::shared_ptr<Buffer<char>> outputBuffer)
 	: m_inputBuffer(inputBuffer), m_outputBuffer(outputBuffer)
 {
 	morseMap = createMorseCodeMap();

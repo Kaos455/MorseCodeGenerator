@@ -2,7 +2,7 @@
 
 using namespace ImGuiComponents;
 
-OutputBox::OutputBox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2& size)
+OutputBox::OutputBox(const char* label, std::shared_ptr<Buffer<char>> buffer, const ImVec2& size)
 	: ImGuiComponent(size), label(label), io(ImGui::GetIO()), buffer(buffer) {}
 
 

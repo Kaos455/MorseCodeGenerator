@@ -1,7 +1,10 @@
 #include "gui/custom_components/MainComponent.h"
 
-MainComponent::MainComponent(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer)
-	: io(ImGui::GetIO()), m_inputBuffer(inputBuffer), m_outputBuffer(outputBuffer) {}
+MainComponent::MainComponent(std::shared_ptr<Buffer<char>> inputBuffer, std::shared_ptr<Buffer<char>> outputBuffer)
+	: io(ImGui::GetIO()), m_inputBuffer(inputBuffer), m_outputBuffer(outputBuffer) 
+{
+	std::cout << "Setup: Main Component created" << std::endl;
+}
 
 void MainComponent::render()
 {

@@ -1,7 +1,15 @@
 // Place where the Morse Code is
+
+// Standard Library Includes
 #include <unordered_map>
 #include <vector>
 
+/*
+* @brief Structure for the Morse Code Object found within MorseMap
+* 
+* Each instance of MorseCode has a length and character vector. This is not exactly needed as vectors have a length method.
+* However there are plans to change the method that i am doing the "Morse Code" 
+*/
 struct MorseCode
 {
 	int length;

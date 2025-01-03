@@ -3,7 +3,7 @@
 using namespace ImGuiComponents; 
 
 // Constructor
-Textbox::Textbox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2& size)
+Textbox::Textbox(const char* label, std::shared_ptr<Buffer<char>> buffer, const ImVec2& size)
     : ImGuiComponent(size), label(label), buffer(buffer)
 {
 }

@@ -83,6 +83,11 @@ private:
 	*/
 	bool initGLAD();
 
+	/*
+	* @brief Initialisation function for the GLFW* window
+	* 
+	* @return bool true (if successfuly initialised) or false (if failed to initialise)
+	*/
 	bool initWindow();
 };
 

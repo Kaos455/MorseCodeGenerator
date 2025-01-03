@@ -12,22 +12,22 @@
 #include <functional> // std::function
 #include <memory>
 
-/**
- * @brief The GUI class is a class that represents the GUI of the application.
- * 
- * The GUI class is a class which seperates the GUI from the rest of the application, allowing for easier maintenance and modification of the GUI.
- * The GUI uses the Dear ImGui library to create the GUI with OpenGL its backend. Additionally, GLFW and GLAD are used to create the window and handle OpenGL easier.
- */
+/*
+* @brief The GUI class is a class that represents the GUI of the application.
+* 
+* The GUI class is a class which seperates the GUI from the rest of the application, allowing for easier maintenance and modification of the GUI.
+* The GUI uses the Dear ImGui library to create the GUI with OpenGL its backend. Additionally, GLFW and GLAD are used to create the window and handle OpenGL easier.
+*/
 class Gui
 {
 public:
 	/*
 	* @brief Constructor for GUI
-	 *
-	 * This consturctor will call the initialisation functions for the OpenGL backend, such as GLFW and GLAD
-	 * This constructor does not start the main rendering loop of the application.
+	*
+	* This consturctor will call the initialisation functions for the OpenGL backend, such as GLFW and GLAD
+	* This constructor does not start the main rendering loop of the application.
 	*/
-	Gui(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer);
+	Gui(std::shared_ptr<Buffer<char>> inputBuffer, std::shared_ptr<Buffer<char>> outputBuffer);
 	
 	/*
 	 * @brief Destructor for GUI

@@ -38,12 +38,12 @@ public:
 
 private:
 	// Shared Pointers
-	std::shared_ptr<Buffer> m_inputBuffer;  // Input buffer with a copy to be used with Event Dispatcher later
-	std::shared_ptr<Buffer> m_inputBufferCopy;
-	std::shared_ptr<Buffer> m_outputBuffer; // Output Buffer used for Output Text
+	std::shared_ptr<Buffer<char>> m_inputBuffer;  // Input buffer with a copy to be used with Event Dispatcher later
+	std::shared_ptr<Buffer<char>> m_inputBufferCopy;
+	std::shared_ptr<Buffer<char>> m_outputBuffer; // Output Buffer used for Output Text
 
-	std::unique_ptr<Gui> m_gui;
-	std::unique_ptr<MorseCodeGenerator> m_generator;
+	std::unique_ptr<Gui> m_gui; // Gui
+	std::unique_ptr<MorseCodeGenerator> m_morseGenerator; // Morse Code Generator
 };
 
 #endif // APPLICATION_H

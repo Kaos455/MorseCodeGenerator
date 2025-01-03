@@ -1,10 +1,17 @@
 #ifndef IMGUICOMPONENT_H
 #define IMGUICOMPONENT_H
 
+// Dear ImGui Includes
 #include "imgui.h"
 
 namespace ImGuiComponents 
 {
+	/*
+	* @brief Abstract Class ImGuiComponent 
+	* 
+	* - All implementation is within header due to it being an abstract class so is easier to follow
+	* - Useful for anything which may want to be of different size or pos if wanted.
+	*/
 	class ImGuiComponent
 	{
 	public:
