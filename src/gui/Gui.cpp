@@ -1,7 +1,7 @@
 #include "gui/Gui.h"
 
 // Constructor for GUI
-Gui::Gui(std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer) 
+Gui::Gui(std::shared_ptr<Buffer<char>> inputBuffer, std::shared_ptr<Buffer<char>> outputBuffer) 
 	: m_guiOpenGL(std::make_unique<GuiOpenGL>()),
 	m_guiImGui(std::make_unique<GuiImGui>(m_guiOpenGL->getWindow(), inputBuffer, outputBuffer)) {}
 

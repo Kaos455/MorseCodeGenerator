@@ -1,6 +1,7 @@
 #ifndef MEDIAPLAYER_H
 #define MEDIAPLAYER_H
 
+// Dear ImGui Includes
 #include "imgui.h"
 
 namespace ImGuiComponents {
@@ -8,7 +9,7 @@ namespace ImGuiComponents {
 	{
 	public:
 		MediaPlayer(const char* label, const ImVec2& size);
-		~MediaPlayer() = default;
+		~MediaPlayer();
 
 		void render();
 	private:

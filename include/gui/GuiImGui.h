@@ -1,7 +1,7 @@
 #ifndef GUIIMGUI_H
 #define GUIIMGUI_H
 
-// Custom Components
+// Custom Library Includes
 #include "gui/custom_components/HeaderComponent.h"
 #include "gui/custom_components/MainComponent.h"
 #include "gui/custom_components/FooterComponent.h"
@@ -28,7 +28,7 @@ public:
 	* 
 	* @param GLFWwindow* window The window to be passed to ImGui
 	*/
-	GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer);
+	GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer<char>> inputBuffer, std::shared_ptr<Buffer<char>> outputBuffer);
 
 	/*
 	* @brief Destructor for GuiImGui
@@ -69,14 +69,22 @@ public:
 	void postRender();
 
 	// ImGui setup -> ApplyTheme, Setup Fonts etc
+
+	/*
+	* @brief Applies a base theme to ImGui
+	*/
 	void applyTheme();
+
+	/*
+	* @brief Sets up the basic fonts required for the program
+	*/
 	void setupImGuiFonts(ImGuiIO& io);
 
 private:
 	GLFWwindow* m_window = nullptr;
 
-	std::shared_ptr<Buffer> m_inputBuffer;
-	std::shared_ptr<Buffer> m_outputBuffer;
+	std::shared_ptr<Buffer<char>> m_inputBuffer;
+	std::shared_ptr<Buffer<char>> m_outputBuffer;
 };
 
 

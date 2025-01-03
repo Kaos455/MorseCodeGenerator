@@ -1,8 +1,11 @@
 #ifndef HEADERCOMPONENT_H
 #define HEADERCOMPONENT_H
 
-#include "imgui.h"
+// Standard Library Includes
 #include <iostream>
+
+// Dear ImGui Includes
+#include "imgui.h"
 
 // Class does not need to inherit from ImGuiComponent due to not needing to encapsulate logic such as an Input Buffer (like Textbox)
 

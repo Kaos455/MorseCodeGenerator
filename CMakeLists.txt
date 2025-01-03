@@ -24,6 +24,7 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE
         imgui::imgui
         portaudio
+        portaudio
         mp3lame::mp3lame
         glad::glad
         glfw

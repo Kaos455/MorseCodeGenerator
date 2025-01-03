@@ -1,7 +1,7 @@
 #include "gui/GuiImGui.h"
 
 // Constructor for ImGui Gui
-GuiImGui::GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer> inputBuffer, std::shared_ptr<Buffer> outputBuffer) 
+GuiImGui::GuiImGui(GLFWwindow* window, std::shared_ptr<Buffer<char>> inputBuffer, std::shared_ptr<Buffer<char>> outputBuffer)
 	: m_window(window), m_inputBuffer(inputBuffer), m_outputBuffer(outputBuffer)
 {
 	if (!initImGui()) {
@@ -51,7 +51,7 @@ void GuiImGui::preRender() // Pre-render is the where the new frame is added to 
 	// Make the ImGui window fullscreen and resizable
 	ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f));
 	ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize));
-	ImGui::Begin("Input Test", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
+	ImGui::Begin("Application", 0, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
 
 	static HeaderComponent header;
 	header.render();

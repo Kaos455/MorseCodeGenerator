@@ -2,8 +2,17 @@
 
 using namespace ImGuiComponents;
 
-OutputBox::OutputBox(const char* label, std::shared_ptr<Buffer> buffer, const ImVec2& size)
+OutputBox::OutputBox(const char* label, std::shared_ptr<Buffer<char>> buffer, const ImVec2& size)
 	: ImGuiComponent(size), label(label), io(ImGui::GetIO()), buffer(buffer) {}
+
+
+OutputBox::~OutputBox()
+{
+    if (label)
+    {
+        label = nullptr;
+    }
+}
 
 void OutputBox::render()
 {
@@ -23,7 +32,7 @@ void OutputBox::applyStyle()
     ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10.0f);
 
     if (ImGui::GetIO().Fonts->Fonts.size() > 1) {
-        ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+        ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[3]);
     }
     else {
         std::cerr << "Font index out of bounds!" << std::endl;

@@ -8,6 +8,7 @@
 // Custom Library Includes
 #include "gui/Gui.h"
 #include "buffer/Buffer.h" // Buffer objects for use as inputBuffer and outputBuffer
+#include "generator/MorseCodeGenerator.h"
 
 class Application
 {
@@ -37,10 +38,12 @@ public:
 
 private:
 	// Shared Pointers
-	std::shared_ptr<Buffer> m_inputBuffer;  // At the root of the application to allow access
-	std::shared_ptr<Buffer> m_outputBuffer; // throughout the application without use of globals
+	std::shared_ptr<Buffer<char>> m_inputBuffer;  // Input buffer with a copy to be used with Event Dispatcher later
+	std::shared_ptr<Buffer<char>> m_inputBufferCopy;
+	std::shared_ptr<Buffer<char>> m_outputBuffer; // Output Buffer used for Output Text
 
-	std::shared_ptr<Gui> m_gui;
+	std::unique_ptr<Gui> m_gui; // Gui
+	std::unique_ptr<MorseCodeGenerator> m_morseGenerator; // Morse Code Generator
 };
 
 #endif // APPLICATION_H

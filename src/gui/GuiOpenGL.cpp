@@ -52,7 +52,7 @@ bool GuiOpenGL::initGLAD()
 
 bool GuiOpenGL::initWindow()
 {
-	m_window = glfwCreateWindow(1280, 720, "Morse Code Generator", NULL, NULL); // Create GLFW _window
+	m_window = glfwCreateWindow(1280, 920, "Morse Code Generator", NULL, NULL); // Create GLFW _window
 	if (!m_window) // Window Checker
 	{
 		std::cerr << "Failed to create GLFW _window" << std::endl;
@@ -89,7 +89,7 @@ void GuiOpenGL::preRender()
 
 void GuiOpenGL::render()
 {
-	glViewport(0, 0, 1280, 720);
+	glViewport(0, 0, 1280, 920);
 	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
