@@ -17,7 +17,7 @@ Buffer<T>::~Buffer()
 	{
 		delete[] data; // Deleting (deallocating) the array
 		data = nullptr; // Prevent dangling pointer
-		std::cout << "Closing: Buffer with capacity of " << capacity << " has been deleted" << std::endl;
+		std::cout << "Closing: " << (isResizable ? "Dynamic" : "Static") << " Buffer with capacity of " << capacity << " has been deleted" << std::endl;
 	}
 }
 

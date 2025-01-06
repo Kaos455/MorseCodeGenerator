@@ -19,7 +19,7 @@ void MorseCodeGenerator::generate()
 	int outputCharIndex = 0;
 
 	if (inputData[0] == '\0') {
-		outputData[0] = '\0';
+		m_outputBuffer->clear();
 		return;
 	}
 
