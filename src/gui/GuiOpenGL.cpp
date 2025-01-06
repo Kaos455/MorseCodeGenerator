@@ -10,7 +10,7 @@ GuiOpenGL::GuiOpenGL()
 
 GuiOpenGL::~GuiOpenGL()
 {
-	glfwDestroyWindow(m_window); // Destroy GLFW _window -> handles cleanup of pointer for _window
+	glfwDestroyWindow(m_window); // Destroy GLFW m_window -> handles cleanup of pointer for m_window
 	glfwTerminate(); // Terminate GLFW
 }
 
@@ -52,7 +52,7 @@ bool GuiOpenGL::initGLAD()
 
 bool GuiOpenGL::initWindow()
 {
-	m_window = glfwCreateWindow(1280, 920, "Morse Code Generator", NULL, NULL); // Create GLFW _window
+	m_window = glfwCreateWindow(1280, 920, "Morse Code Generator", NULL, NULL); // Create GLFW m_window
 	if (!m_window) // Window Checker
 	{
 		std::cerr << "Failed to create GLFW _window" << std::endl;

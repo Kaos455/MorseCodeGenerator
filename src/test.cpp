@@ -14,13 +14,13 @@ int test() {
     MorseCodeGenerator converter(inputBuffer, outputBuffer);
 
     // Setup some simple tests
-    const char* testInput1 = "";
-    const char* testInput2 = "AB";
+    const char* testInput1 = "AB";
+    const char* testInput2 = "";
     const char* testInput3 = "Hello I exist";
     const char* testInput4 = "Test with !#.;";
 
-    const char* expectedOutput1 = "";
-    const char* expectedOutput2 = ".- -... ";
+    const char* expectedOutput1 = ".- -... ";
+    const char* expectedOutput2 = "";
     const char* expectedOutput3 = ".... . .-.. .-.. --- / .. / . -..- .. ... - ";
     const char* expectedOutput4 = "- . ... - / .-- .. - .... / -.-.-- # .-.-.- # ";
 

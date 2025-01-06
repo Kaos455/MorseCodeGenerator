@@ -60,6 +60,7 @@ public:
 	void postRender();
 
 private:
+	// Pointer to GLFW window, initially set to nullptr to show no window is created yet.
 	GLFWwindow* m_window = nullptr;
 
 	/*

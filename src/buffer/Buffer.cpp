@@ -58,11 +58,6 @@ void Buffer<T>::clear()
 template <typename T>
 void Buffer<T>::resize(size_t expectedCap)
 {
-	if (capacity > expectedCap)
-	{
-		throw std::invalid_argument("Capacity is already greater than expected capacity");	// Throw an Invalid Argument Error
-	}
-
 	if (!isResizable) // Check if the Buffer is Resizable
 	{
 		throw std::runtime_error("Resize not allowed for Static Buffer");	// Throw a Runtime Error
@@ -71,6 +66,11 @@ void Buffer<T>::resize(size_t expectedCap)
 	if (expectedCap <= 0)
 	{
 		throw std::invalid_argument("Expected Capacity must be greater than 0");	// Throw an Invalid Argument Error
+	}
+
+	if (capacity > expectedCap)
+	{
+		throw std::invalid_argument("Capacity is already greater than expected capacity");	// Throw an Invalid Argument Error
 	}
 
 	size_t newCap = capacity;
@@ -89,8 +89,7 @@ void Buffer<T>::resize(size_t expectedCap)
 	T* newData = new T[newCap];
 
 	// Copy existing values to the new buffer
-	size_t elementsToCopy = (newCap < capacity) ? newCap : capacity; // Find the minium of the new and old caps
-	std::memcpy(newData, data, (elementsToCopy * sizeof(T))); // Copy only the initialised elements of the old buffer to the new one
+	std::memcpy(newData, data, (capacity * sizeof(T))); // Copy only the initialised elements of the old buffer to the new one
 
 	// Free up old data and assign to new Data
 	delete[] data;
@@ -103,5 +102,5 @@ void Buffer<T>::resize(size_t expectedCap)
 // Explicit Template instantiations for the types needed in the Application
 // Without these the Class cannot properly link
 template class Buffer<char>;
-template class Buffer<float>;
+template class Buffer<double>;
 template class Buffer<int>;

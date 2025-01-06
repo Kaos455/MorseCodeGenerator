@@ -18,6 +18,11 @@ void MorseCodeGenerator::generate()
 	char* outputData = m_outputBuffer->getData();
 	int outputCharIndex = 0;
 
+	if (inputData[0] == '\0') {
+		outputData[0] = '\0';
+		return;
+	}
+
 	for (size_t i = 0; i < m_inputBuffer->getCapacity(); i++)
 	{
 		if (inputData[i] == '\0' || outputCharIndex > m_outputBuffer->getCapacity())

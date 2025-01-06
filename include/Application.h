@@ -44,7 +44,7 @@ private:
 	void checkResourcesFolder();
 	void checkFontsFolder();
 
-	// Shared Pointers
+	// Smart Pointers
 	std::shared_ptr<Buffer<char>> m_inputBuffer;  // Input buffer with a copy to be used with Event Dispatcher later
 	std::shared_ptr<Buffer<char>> m_inputBufferCopy;
 	std::shared_ptr<Buffer<char>> m_outputBuffer; // Output Buffer used for Output Text
